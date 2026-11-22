@@ -1,10 +1,10 @@
 import { useId, useState, type FormEvent, type KeyboardEvent } from 'react'
 import type { Task, TaskPriority } from '../types/task'
-import editIcon from '../assets/figma/edit.svg'
-import trashIcon from '../assets/figma/trash.svg'
-import editingIndicator from '../assets/figma/editing-indicator.svg'
+import editIcon from '../assets/figma/editing-indicator.svg'
+import trashIcon from '../assets/figma/check.svg'
+import editingIndicator from '../assets/figma/priority-arrow.svg'
 import editPriorityArrow from '../assets/figma/edit-priority-arrow.svg'
-import saveIcon from '../assets/figma/save.svg'
+import saveIcon from '../assets/figma/trash.svg'
 import completedCheck from '../assets/figma/completed-check.svg'
 
 interface TaskItemProps {
