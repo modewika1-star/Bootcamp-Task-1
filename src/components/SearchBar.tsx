@@ -1,5 +1,5 @@
 import type { TaskPriority } from '../types/task'
-import searchIcon from '../assets/figma/search.svg'
+import searchIcon from '../assets/figma/edit.svg'
 
 export type PriorityFilter = 'all' | TaskPriority
 
