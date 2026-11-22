@@ -58,7 +58,7 @@ function App() {
         </div>
       </header>
 
-      <main className="taskflow-shell mx-auto flex w-full max-w-[760px] flex-col gap-6 px-4 pb-10 pt-10 sm:pt-[88px]">
+      <main className="taskflow-shell mx-auto flex w-full max-w-[760px] flex-col gap-6 px-4 pb-10 pt-6">
         <section className="progress-card" aria-labelledby="progress-heading">
           <div className="progress-card__top">
             <div className="section-heading">
@@ -102,17 +102,7 @@ function App() {
 
         <TaskForm />
 
-        <section className="task-section" aria-labelledby="task-list-heading">
-          <div className="task-section__heading">
-            <div>
-              <p className="eyebrow">YOUR WORKSPACE</p>
-              <h2 id="task-list-heading">Your tasks</h2>
-            </div>
-            <span className="task-total">
-              {tasks.length} {tasks.length === 1 ? 'task' : 'tasks'}
-            </span>
-          </div>
-
+        <section className="task-section" aria-label="Task list">
           <SearchBar
             search={search}
             onSearchChange={setSearch}
