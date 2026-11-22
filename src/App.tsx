@@ -3,7 +3,7 @@ import './App.css'
 import SearchBar, { type PriorityFilter } from './components/SearchBar'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
-import { useTaskContext } from './context/TaskContext'
+import { useTaskContext } from './context/useTaskContext'
 import taskflowLogo from './assets/figma/taskflow-logo.svg'
 
 function App() {
