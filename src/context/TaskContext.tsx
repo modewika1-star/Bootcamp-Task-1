@@ -43,7 +43,7 @@ const starterTasks: Task[] = [
     id: 'task-monorepo',
     title: 'Setup Next.js 15 Monorepo with Turborepo',
     description:
-      'Configured shared UI library, ESLint, Prettier, and TypeScript base config.',
+      'Configured shared UI library, Oxlint, Prettier, and TypeScript base config.',
     priority: 'low',
     completed: true,
     createdAt: '2026-11-16T11:00:00.000Z',
