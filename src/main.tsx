@@ -1,11 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import App from './App'
+import { TaskProvider } from './context/TaskContext'
 import './index.css'
-import App from './App.tsx'
-import "./index.css";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <TaskProvider>
+      <App />
+    </TaskProvider>
   </StrictMode>,
 )
