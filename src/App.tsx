@@ -1,121 +1,142 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { useMemo, useState } from 'react'
 import './App.css'
+import SearchBar, { type PriorityFilter } from './components/SearchBar'
+import TaskForm from './components/TaskForm'
+import TaskList from './components/TaskList'
+import { useTaskContext } from './context/TaskContext'
+import taskflowLogo from './assets/figma/taskflow-logo.svg'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { tasks, toggleTask, deleteTask, updateTask } = useTaskContext()
+  const [search, setSearch] = useState('')
+  const [priorityFilter, setPriorityFilter] = useState<PriorityFilter>('all')
+
+  const completedCount = tasks.filter((task) => task.completed).length
+  const urgentCount = tasks.filter(
+    (task) => task.priority === 'high' && !task.completed,
+  ).length
+  const progress = tasks.length
+    ? Math.round((completedCount / tasks.length) * 100)
+    : 0
+
+  const counts = useMemo(
+    () => ({
+      all: tasks.length,
+      high: tasks.filter((task) => task.priority === 'high').length,
+      medium: tasks.filter((task) => task.priority === 'medium').length,
+      low: tasks.filter((task) => task.priority === 'low').length,
+    }),
+    [tasks],
+  )
+
+  const visibleTasks = useMemo(() => {
+    const normalizedSearch = search.trim().toLowerCase()
+
+    return tasks.filter((task) => {
+      const matchesPriority =
+        priorityFilter === 'all' || task.priority === priorityFilter
+      const matchesSearch =
+        !normalizedSearch ||
+        task.title.toLowerCase().includes(normalizedSearch) ||
+        task.description.toLowerCase().includes(normalizedSearch)
+
+      return matchesPriority && matchesSearch
+    })
+  }, [priorityFilter, search, tasks])
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app min-h-screen">
+      <header className="site-header">
+        <div className="site-header__inner">
+          <a className="brand" href="/" aria-label="TaskFlow home">
+            <span className="brand__mark">
+              <img src={taskflowLogo} alt="" />
+            </span>
+            <span>TaskFlow</span>
+          </a>
+          <p className="header-caption">Make room for what matters.</p>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
+      <main className="taskflow-shell mx-auto flex w-full max-w-[760px] flex-col gap-6 px-4 pb-10 pt-10 sm:pt-[88px]">
+        <section className="progress-card" aria-labelledby="progress-heading">
+          <div className="progress-card__top">
+            <div className="section-heading">
+              <span className="section-heading__mark" aria-hidden="true">
+                <span className="section-heading__bar" />
+                <span className="section-heading__bar" />
+                <span className="section-heading__bar" />
+              </span>
+              <h1 id="progress-heading">Progress overview</h1>
+            </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+            <div className="progress-stats">
+              <span className="completed-stat">
+                <strong>{completedCount}</strong>
+                <span>of {tasks.length} completed</span>
+              </span>
+              <span className="urgent-stat">
+                <span className="urgent-stat__dot" />
+                {urgentCount} urgent {urgentCount === 1 ? 'task' : 'tasks'}
+              </span>
+            </div>
+          </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          <div className="progress-card__bottom">
+            <div className="progress-copy">
+              <span>Overall progress</span>
+              <strong>{progress}%</strong>
+            </div>
+            <div
+              className="progress-track"
+              role="progressbar"
+              aria-label="Task completion"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={progress}
+            >
+              <span className="progress-track__value" style={{ width: `${progress}%` }} />
+            </div>
+          </div>
+        </section>
+
+        <TaskForm />
+
+        <section className="task-section" aria-labelledby="task-list-heading">
+          <div className="task-section__heading">
+            <div>
+              <p className="eyebrow">YOUR WORKSPACE</p>
+              <h2 id="task-list-heading">Your tasks</h2>
+            </div>
+            <span className="task-total">
+              {tasks.length} {tasks.length === 1 ? 'task' : 'tasks'}
+            </span>
+          </div>
+
+          <SearchBar
+            search={search}
+            onSearchChange={setSearch}
+            priorityFilter={priorityFilter}
+            onPriorityFilterChange={setPriorityFilter}
+            counts={counts}
+          />
+
+          <TaskList
+            tasks={visibleTasks}
+            search={search}
+            priorityFilter={priorityFilter}
+            onToggle={toggleTask}
+            onDelete={deleteTask}
+            onUpdate={updateTask}
+          />
+        </section>
+      </main>
+
+      <footer className="app-footer">
+        <span className="footer-brand">TaskFlow</span>
+        <span>Small steps. Steady progress.</span>
+      </footer>
+    </div>
   )
 }
 
