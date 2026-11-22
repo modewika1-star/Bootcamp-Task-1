@@ -1,13 +1,12 @@
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from 'react'
 import type { NewTask, Task } from '../types/task'
+import { TaskContext } from './task-context'
 
 const STORAGE_KEY = 'taskflow.tasks.v1'
 
@@ -58,16 +57,6 @@ const starterTasks: Task[] = [
     createdAt: '2026-11-15T13:45:00.000Z',
   },
 ]
-
-interface TaskContextValue {
-  tasks: Task[]
-  addTask: (task: NewTask) => void
-  updateTask: (task: Task) => void
-  toggleTask: (id: string) => void
-  deleteTask: (id: string) => void
-}
-
-const TaskContext = createContext<TaskContextValue | null>(null)
 
 function isTask(value: unknown): value is Task {
   if (!value || typeof value !== 'object') return false
@@ -162,12 +151,3 @@ export function TaskProvider({ children }: TaskProviderProps) {
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>
 }
 
-export function useTaskContext() {
-  const context = useContext(TaskContext)
-
-  if (!context) {
-    throw new Error('useTaskContext must be used inside TaskProvider')
-  }
-
-  return context
-}
