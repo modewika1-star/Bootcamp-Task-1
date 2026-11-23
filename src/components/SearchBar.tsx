@@ -38,7 +38,8 @@ function SearchBar({
         />
       </label>
 
-      <div className="filter-tabs" role="group" aria-label="Filter tasks by priority">
+      <fieldset className="filter-tabs">
+        <legend className="sr-only">Filter tasks by priority</legend>
         {filters.map((filter) => (
           <button
             className="filter-tab"
@@ -51,7 +52,7 @@ function SearchBar({
             <span className="filter-tab__count">{counts[filter.value]}</span>
           </button>
         ))}
-      </div>
+      </fieldset>
     </div>
   )
 }
