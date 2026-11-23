@@ -57,7 +57,7 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
     setIsEditing(false)
   }
 
-  function handleEditorKeyDown(event: KeyboardEvent<HTMLFormElement>) {
+  function handleEditorKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (event.key === 'Escape') {
       event.preventDefault()
       cancelEditing()
@@ -71,7 +71,6 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
           <form
             className="task-editor"
             onSubmit={handleSave}
-            onKeyDown={handleEditorKeyDown}
           >
             <div className="task-editor__topline">
               <span className="task-editor__hint">
@@ -91,7 +90,7 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
                 onChange={(event) => setDraftTitle(event.target.value)}
                 maxLength={120}
                 required
-                autoFocus
+                onKeyDown={handleEditorKeyDown}
               />
             </label>
 
@@ -104,6 +103,7 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
                 onChange={(event) => setDraftDescription(event.target.value)}
                 maxLength={240}
                 rows={2}
+                onKeyDown={handleEditorKeyDown}
               />
             </label>
 
@@ -116,6 +116,7 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
                   onChange={(event) =>
                     setDraftPriority(event.target.value as TaskPriority)
                   }
+                  onKeyDown={handleEditorKeyDown}
                 >
                   <option value="high">High priority</option>
                   <option value="medium">Medium priority</option>
@@ -133,6 +134,7 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
                   className="cancel-button"
                   type="button"
                   onClick={cancelEditing}
+                  onKeyDown={handleEditorKeyDown}
                 >
                   Cancel
                 </button>
@@ -140,6 +142,7 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
                   className="save-button"
                   type="submit"
                   disabled={!draftTitle.trim()}
+                  onKeyDown={handleEditorKeyDown}
                 >
                   <img src={saveIcon} alt="" />
                   Save changes
