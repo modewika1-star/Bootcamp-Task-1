@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import './App.css'
-import SearchBar, { type PriorityFilter } from './components/SearchBar'
+import SearchBar from './components/SearchBar'
+import type { PriorityFilter } from './types/task'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import { useTaskContext } from './context/useTaskContext'
