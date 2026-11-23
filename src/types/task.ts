@@ -1,4 +1,5 @@
 export type TaskPriority = 'high' | 'medium' | 'low'
+export type PriorityFilter = 'all' | TaskPriority
 
 export interface Task {
   id: string
