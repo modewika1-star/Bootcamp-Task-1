@@ -17,7 +17,7 @@
     "suspicious": "warn"
   },
   "rules": {
-    "react/hooks": "error",
+    "react/rules-of-hooks": "error",
     "react/only-export-components": [
       "warn",
       {
