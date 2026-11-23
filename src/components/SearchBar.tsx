@@ -1,7 +1,6 @@
-import type { TaskPriority } from '../types/task'
+import type { PriorityFilter } from '../types/task'
 import searchIcon from '../assets/figma/search.svg'
 
-export type PriorityFilter = 'all' | TaskPriority
 
 interface SearchBarProps {
   search: string
