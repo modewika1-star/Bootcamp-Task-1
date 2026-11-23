@@ -2,8 +2,8 @@ import { useState, type FormEvent } from 'react'
 import { useTaskContext } from '../context/useTaskContext'
 import type { TaskPriority } from '../types/task'
 import createTaskIcon from '../assets/figma/create-task.svg'
-import priorityArrow from '../assets/figma/plus.svg'
-import plusIcon from '../assets/figma/search.svg'
+import priorityArrow from '../assets/figma/priority-arrow.svg'
+import plusIcon from '../assets/figma/plus.svg'
 
 function TaskForm() {
   const { addTask } = useTaskContext()
