@@ -58,7 +58,7 @@ function App() {
         </div>
       </header>
 
-      <main className="taskflow-shell mx-auto flex w-full max-w-[760px] flex-col gap-6 px-4 pb-10 pt-6">
+      <main className="taskflow-shell mx-auto flex w-full max-w-[760px] flex-col gap-6 px-4 pb-10 pt-6 sm:pt-[88px]">
         <section className="progress-card" aria-labelledby="progress-heading">
           <div className="progress-card__top">
             <div className="section-heading">
