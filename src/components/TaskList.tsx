@@ -1,5 +1,5 @@
 import TaskItem from './TaskItem'
-import type { PriorityFilter } from './SearchBar'
+import type { PriorityFilter } from '../types/task'
 import type { Task } from '../types/task'
 
 interface TaskListProps {
