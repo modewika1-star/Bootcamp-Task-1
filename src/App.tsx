@@ -88,16 +88,14 @@ function App() {
               <span>Overall progress</span>
               <strong>{progress}%</strong>
             </div>
-            <div
+            <progress
               className="progress-track"
-              role="progressbar"
               aria-label="Task completion"
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={progress}
+              max={100}
+              value={progress}
             >
-              <span className="progress-track__value" style={{ width: `${progress}%` }} />
-            </div>
+              {progress}%
+            </progress>
           </div>
         </section>
 
