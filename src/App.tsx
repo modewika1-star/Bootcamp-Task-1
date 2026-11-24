@@ -126,11 +126,17 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <span className="footer-brand">TaskFlow</span>
-        <span>Small steps. Steady progress.</span>
         <span className="footer-credit">
-          Created in 2026 · Created by <strong>Hejazi</strong>
+          Created by{' '}
+          <a href="https://7ijazi.vercel.app/" target="_blank" rel="noopener noreferrer">
+            Hejazi
+          </a>
         </span>
+        <div className="footer-center">
+          <span className="footer-brand">TaskFlow</span>
+          <span>Small steps. Steady progress.</span>
+        </div>
+        <span className="footer-made">Made in 2026</span>
       </footer>
     </div>
   )
