@@ -10,13 +10,15 @@ permissions:
   pages: write
   id-token: write
 
+# Use a fresh group to avoid being blocked by an older stuck deployment.
 concurrency:
-  group: github-pages
+  group: github-pages-deploy-2026-11-24
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -43,6 +45,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: build
     steps:
       - name: Deploy to GitHub Pages
