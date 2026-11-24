@@ -129,7 +129,7 @@ function App() {
         <span className="footer-credit">
           Created by{' '}
           <a href="https://7ijazi.vercel.app/" target="_blank" rel="noopener noreferrer" lang="ar" dir="rtl">
-            حجازي
+            7ijazi
           </a>
         </span>
         <div className="footer-center">
