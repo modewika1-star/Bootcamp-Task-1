@@ -24,7 +24,9 @@ function TaskList({
 
     return (
       <div className="empty-state" aria-live="polite" aria-atomic="true">
-        <span className="empty-state__symbol" aria-hidden="true">✓</span>
+        <span className="empty-state__symbol" aria-hidden="true">
+          ✓
+        </span>
         <h3>{hasFilters ? 'No matching tasks' : 'Your list is clear'}</h3>
         <p>
           {hasFilters

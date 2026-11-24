@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"*.json\" \"*.ts\" \"*.html\" \"*.md\" \".github/workflows/*.yml\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"*.json\" \"*.ts\" \"*.html\" \"*.md\" \".github/workflows/*.yml\""
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
@@ -23,6 +25,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.94.0",
     "typescript": "~6.0.3",
-    "vite": "^8.3.6"
+    "vite": "^8.3.6",
+    "prettier": "3.6.2"
   }
 }

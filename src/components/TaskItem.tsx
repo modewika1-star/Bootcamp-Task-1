@@ -26,7 +26,9 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [draftTitle, setDraftTitle] = useState(task.title)
   const [draftDescription, setDraftDescription] = useState(task.description)
-  const [draftPriority, setDraftPriority] = useState<TaskPriority>(task.priority)
+  const [draftPriority, setDraftPriority] = useState<TaskPriority>(
+    task.priority,
+  )
 
   function startEditing() {
     setDraftTitle(task.title)
@@ -66,12 +68,11 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
 
   return (
     <li>
-      <article className={`task-card${task.completed ? ' task-card--completed' : ''}`}>
+      <article
+        className={`task-card${task.completed ? ' task-card--completed' : ''}`}
+      >
         {isEditing ? (
-          <form
-            className="task-editor"
-            onSubmit={handleSave}
-          >
+          <form className="task-editor" onSubmit={handleSave}>
             <div className="task-editor__topline">
               <span className="task-editor__hint">
                 <img src={editingIndicator} alt="" />
@@ -169,7 +170,9 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
             <div className="task-card__content">
               <div className="task-card__title-row">
                 <h3 className="task-card__title">{task.title}</h3>
-                <span className={`priority-badge priority-badge--${task.priority}`}>
+                <span
+                  className={`priority-badge priority-badge--${task.priority}`}
+                >
                   {priorityLabels[task.priority]}
                 </span>
               </div>

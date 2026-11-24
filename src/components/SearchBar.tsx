@@ -1,7 +1,6 @@
 import type { PriorityFilter } from '../types/task'
 import searchIcon from '../assets/figma/search.svg'
 
-
 interface SearchBarProps {
   search: string
   onSearchChange: (value: string) => void

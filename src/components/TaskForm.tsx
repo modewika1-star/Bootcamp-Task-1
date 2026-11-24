@@ -57,7 +57,9 @@ function TaskForm() {
           <select
             className="priority-select"
             value={priority}
-            onChange={(event) => setPriority(event.target.value as TaskPriority)}
+            onChange={(event) =>
+              setPriority(event.target.value as TaskPriority)
+            }
           >
             <option value="high">High priority</option>
             <option value="medium">Medium priority</option>
@@ -66,7 +68,11 @@ function TaskForm() {
           <img className="priority-field__arrow" src={priorityArrow} alt="" />
         </label>
 
-        <button className="add-task-button" type="submit" disabled={!title.trim()}>
+        <button
+          className="add-task-button"
+          type="submit"
+          disabled={!title.trim()}
+        >
           <img src={plusIcon} alt="" />
           Add task
         </button>

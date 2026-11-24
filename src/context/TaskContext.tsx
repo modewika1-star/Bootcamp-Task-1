@@ -150,4 +150,3 @@ export function TaskProvider({ children }: TaskProviderProps) {
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>
 }
-

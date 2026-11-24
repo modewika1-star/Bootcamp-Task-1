@@ -49,7 +49,11 @@ function App() {
     <div className="app min-h-screen">
       <header className="site-header">
         <div className="site-header__inner">
-          <a className="brand" href={import.meta.env.BASE_URL} aria-label="TaskFlow home">
+          <a
+            className="brand"
+            href={import.meta.env.BASE_URL}
+            aria-label="TaskFlow home"
+          >
             <span className="brand__mark">
               <img src={taskflowLogo} alt="" />
             </span>

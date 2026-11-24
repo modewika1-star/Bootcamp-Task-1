@@ -3,7 +3,11 @@
   min-height: 100vh;
   flex-direction: column;
   background:
-    radial-gradient(ellipse at 50% -18%, rgb(224 222 255 / 36%), transparent 42%),
+    radial-gradient(
+      ellipse at 50% -18%,
+      rgb(224 222 255 / 36%),
+      transparent 42%
+    ),
     #faf8ff;
 }
 
@@ -272,7 +276,9 @@
   background: #fff;
   color: #24243a;
   font-size: 12px;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .form-control::placeholder,
@@ -333,7 +339,10 @@
   font-size: 11px;
   font-weight: 650;
   box-shadow: 0 4px 9px rgb(79 70 229 / 17%);
-  transition: background 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .add-task-button:hover,
@@ -463,14 +472,17 @@
   color: #66657d;
   font-size: 10px;
   font-weight: 600;
-  transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .filter-tab:hover {
   color: #3f3b99;
 }
 
-.filter-tab[aria-pressed="true"] {
+.filter-tab[aria-pressed='true'] {
   background: #fff;
   color: #4338ca;
   box-shadow: 0 1px 4px rgb(37 34 93 / 10%);
@@ -502,7 +514,10 @@
   border-radius: 11px;
   background: rgb(255 255 255 / 96%);
   box-shadow: 0 3px 10px rgb(34 32 70 / 3%);
-  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
 }
 
 .task-card:hover {
@@ -521,7 +536,9 @@
   border: 1.5px solid #cfccdc;
   border-radius: 7px;
   background: #fff;
-  transition: border-color 150ms ease, background 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
 }
 
 .task-checkbox:hover {
@@ -533,7 +550,7 @@
   height: 13px;
 }
 
-.task-checkbox[aria-pressed="true"] {
+.task-checkbox[aria-pressed='true'] {
   border-color: #4f46e5;
   background: #4f46e5;
 }
@@ -585,7 +602,7 @@
   height: 5px;
   border-radius: 50%;
   background: currentColor;
-  content: "";
+  content: '';
 }
 
 .priority-badge--high {

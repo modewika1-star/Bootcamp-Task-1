@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap');
+@import 'tailwindcss';
 
 @theme {
-  --font-sans: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
   --color-canvas: #faf8ff;
   --color-brand: #4f46e5;
   --color-brand-dark: #3525cd;
