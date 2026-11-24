@@ -128,6 +128,9 @@ function App() {
       <footer className="app-footer">
         <span className="footer-brand">TaskFlow</span>
         <span>Small steps. Steady progress.</span>
+        <span className="footer-credit">
+          Created in 2026 · Created by <strong>Hejazi</strong>
+        </span>
       </footer>
     </div>
   )
