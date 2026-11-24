@@ -132,6 +132,16 @@ function TaskItem({ task, onToggle, onDelete, onUpdate }: TaskItemProps) {
 
               <div className="task-editor__buttons">
                 <button
+                  className="delete-button"
+                  type="button"
+                  aria-label={`Delete ${task.title}`}
+                  onClick={() => onDelete(task.id)}
+                  onKeyDown={handleEditorKeyDown}
+                >
+                  <img src={trashIcon} alt="" />
+                  Delete
+                </button>
+                <button
                   className="cancel-button"
                   type="button"
                   onClick={cancelEditing}

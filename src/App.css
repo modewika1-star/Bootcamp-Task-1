@@ -774,6 +774,40 @@
   background: #f8f7fc;
 }
 
+.delete-button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 1px solid #dc2626;
+  border-radius: 7px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 650;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.delete-button:hover {
+  border-color: #b91c1c;
+  background: #b91c1c;
+}
+
+.delete-button:active {
+  transform: translateY(1px);
+}
+
+.delete-button img {
+  width: 12px;
+  height: 12px;
+  filter: brightness(0) invert(1);
+}
+
 .save-button img {
   width: 12px;
   height: 12px;
